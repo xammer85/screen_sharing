@@ -1,10 +1,34 @@
 <installation version="5.0">
-  <variables>
-    <variable name="RESOURCEROOT" value="src/main/izpack"/>
-  </variables>
+	<info>
+		<appname>@{product.name}</appname>
+		<appversion>@{product.version}</appversion>
+	</info>
+	<locale>
+		<langpack iso3="eng" />
+	</locale>
+	<variables>
+		<variable name="RESOURCEROOT" value="src/main/izpack" />
+	</variables>
+	<panels>
+		<panel classname="HelloPanel" />
+		<panel classname="InfoPanel" />
+		<panel classname="LicencePanel" />
+		<panel classname="TargetPanel" />
+		<!-- <panel classname="ImgPacksPanel"/> -->
+		<!-- <panel classname="SummaryPanel"/> -->
+		<panel classname="InstallPanel" />
+		<panel classname="ShortcutPanel" />
+		<panel classname="FinishPanel" />
+	</panels>
+	<packs>
+		<pack name="Main Application" required="yes" installGroups="New Application">
+			<description>Description</description>
+		</pack>
+	</packs>
 	<resources>
-<!-- 	    <res src="@{izpack.staging}/common_resources/img/install-sidebar.png" id="Installer.image"/> -->
-<!-- 	    <res src="hello.html" id="HTMLHelloPanel.info"/> -->
-<!-- 	    <res src="license.html" id="HTMLLicencePanel.licence"/> -->
-	</resources>  
- </installation>
+		<!-- <res src="@{izpack.staging}/common_resources/img/install-sidebar.png" 
+			id="Installer.image"/> -->
+		<!-- <res src="hello.html" id="HTMLHelloPanel.info"/> -->
+		<!-- <res src="license.html" id="HTMLLicencePanel.licence"/> -->
+	</resources>
+</installation>

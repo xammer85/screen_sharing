@@ -101,7 +101,7 @@
 						<configuration>
 							<!-- base for relative paths in izpack descriptor -->
 							<baseDir>${izpack.staging}</baseDir>
-							<installFile>${basedir}/src/izpack/install.xml</installFile>
+							<installFile>${basedir}/src/main/izpack/install.xml</installFile>
 						</configuration>
 					</execution>
 				</executions>
