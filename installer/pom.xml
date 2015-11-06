@@ -2,11 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hammer</groupId>
-	<artifactId>screen_sharing_parent</artifactId>
+	<artifactId>screen_sharing_installer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<modules>
-		<module>app/screen_sharing</module>
-		<module>installer</module>
-	</modules>
+	<properties>
+   		<izpack.version>5.0.0</izpack.version>
+   		<izpack.staging>${project.build.directory}/staging</izpack.staging>
+	</properties>	
+	<dependencies>
+		
+	</dependencies>
 </project>
