@@ -9,11 +9,11 @@ public class RemoteScreenClientManager {
 
 	private Set<RemoteScreenClientProcessor> clientProcessors;
 
-	private Set<RemoteClientEventProcessor> clienEventProcessors;
+	//private Set<RemoteClientEventProcessor> clienEventProcessors;
 	
 	public RemoteScreenClientManager(){
 		clientProcessors = new HashSet<RemoteScreenClientProcessor>();
-		clienEventProcessors = new HashSet<RemoteClientEventProcessor>();
+		//clienEventProcessors = new HashSet<RemoteClientEventProcessor>();
 	}
 
 	public void addClient(Socket clientSocket) {
@@ -29,13 +29,19 @@ public class RemoteScreenClientManager {
 		processorThread1.start();
 		
 		Thread processorThread2 = new Thread(clientEventProcessor);
-		clienEventProcessors.add(clientEventProcessor);
+		//clienEventProcessors.add(clientEventProcessor);
 		processorThread2.start();
 	}
 	
 
 	public void setCurrentScreenImg(BufferedImage currentScreenImg){
 		for (RemoteScreenClientProcessor remoteScreenClientProcessor : clientProcessors) {
+			
+			if(remoteScreenClientProcessor.getClient().isHasError()){
+				clientProcessors.remove(remoteScreenClientProcessor);
+				continue;
+			}
+			
 			remoteScreenClientProcessor.getClient().setScreenImage(currentScreenImg);
 		}
 	}

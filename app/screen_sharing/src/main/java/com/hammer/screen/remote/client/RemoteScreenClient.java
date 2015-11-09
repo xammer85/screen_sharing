@@ -8,6 +8,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.apache.commons.io.IOUtils;
+
 import com.hammer.screen.ScreenUtils;
 import com.hammer.screen.structure.SplittedScreen;
 
@@ -58,12 +60,9 @@ public class RemoteScreenClient {
 		InputEvent ret = null;
 		try {
 			ret = (InputEvent) ois.readObject();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e){
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			error();
 		}
 		return ret;
 	}
@@ -97,8 +96,19 @@ public class RemoteScreenClient {
 				oos.writeObject(screenToSend);
 			} catch (IOException e) {
 				e.printStackTrace();
-				hasError = true;
+				error();
 			}
+		}
+	}
+	
+	private void error(){
+		hasError = true;
+		IOUtils.closeQuietly(ois);
+		IOUtils.closeQuietly(oos);
+		try {
+			socket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -39,6 +39,7 @@ public class RemoteClientEventProcessor implements Runnable {
 			}
 
 			InputEvent e = client.readEvent();
+			
 			if(e instanceof MouseEvent){
 				MouseEvent me = (MouseEvent) e;
 				int meId = me.getID();
@@ -47,6 +48,7 @@ public class RemoteClientEventProcessor implements Runnable {
 				eventRobot.mouseMove(me.getX(), me.getY());
 
 
+				
 				if(meId == MouseEvent.MOUSE_PRESSED){
 					
 					if(button == MouseEvent.BUTTON1)
@@ -69,17 +71,6 @@ public class RemoteClientEventProcessor implements Runnable {
 						eventRobot.mouseRelease(InputEvent.BUTTON2_MASK);
 				}
 
-				//				else if(meId == MouseEvent.MOUSE_CLICKED){
-				//					
-				//					
-				//					
-				//				}
-
-
-				//if(meId == MouseEvent.MOUSE_RELEASED){
-				//	
-				//}
-
 			} else if( e instanceof KeyEvent){
 				KeyEvent ke = (KeyEvent)e;
 
@@ -97,11 +88,6 @@ public class RemoteClientEventProcessor implements Runnable {
 
 			System.out.println("Server has event: "+e);
 
-			//try {
-			//	Thread.sleep(50);
-			//} catch (InterruptedException e) {
-			//	e.printStackTrace();
-			//}
 		}
 
 		try {
